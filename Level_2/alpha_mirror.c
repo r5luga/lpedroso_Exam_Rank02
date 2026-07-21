@@ -27,8 +27,7 @@ void ft_writemirror(char *s)
 int main(int argc, char **argv)
 {
     if (argc != 2)
-        ft_writenl();
+        return (ft_writenl(), 0);
     ft_writemirror(argv[1]);
-    ft_writenl();
-    return 0;
+    return (ft_writenl(), 0);
 }
