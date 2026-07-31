@@ -39,12 +39,24 @@ unsigned char	swap_bits(unsigned char octet)
 
 int main(int argc, char **argv)
 {
+    char c = 48;
+    
     if (argc != 2)
         return 0;
+    printf("char c %c char c decimal %d ", c, c);
+    printf("argv[1] %s atoi(argv[1]) %d \n", argv[1], atoi(argv[1]));
+    printf("atoi(argv[1])\n");
     print_bits(atoi(argv[1]));
     printf("\n");
     print_bits(reverse_bits(atoi(argv[1])));
     printf("\n");
     print_bits(swap_bits(atoi(argv[1])));
+    printf("\n");
+    printf("char c\n");
+    print_bits(c);
+    printf("\n");
+    print_bits(reverse_bits(c));
+    printf("\n");
+    print_bits(swap_bits(c));
     return 0;
 }
