@@ -16,7 +16,7 @@ int main(int argc, char **argv)
     int i = 0;
     
     if (argc != 3)
-        return 0;
+        return (write(1, "\n", 1), 0);
     
     j = 1;
     while (j <= 2)
