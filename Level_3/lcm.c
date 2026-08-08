@@ -1,7 +1,29 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-unsigned int    lcm(unsigned int a, unsigned int b)
+// The GCD (Greatest Common Divisor) is the 
+// largest positive integer that divides two numbers without 
+// leaving a remainder
+unsigned int gcd(unsigned int a, unsigned int b)
+{
+    while (b != 0)
+    {
+        unsigned int tmp = a % b;
+        a = b;
+        b = tmp;
+    }
+    return a;
+}
+
+unsigned int lcm(unsigned int a, unsigned int b)
+{
+    if (a == 0 || b == 0)
+        return 0;
+    return (a / gcd(a, b)) * b;
+}
+
+// lcm brute force
+unsigned int    lcm_bf(unsigned int a, unsigned int b)
 {
     unsigned int m;
     
@@ -24,7 +46,8 @@ int main(int argc, char **argv)
     a = atoi(argv[1]);
     b = atoi(argv[2]);
     printf("Lowest Common Multiple\n");
-    printf("LCM of a=%u and b=%u is %u\n", a, b, lcm(a, b));
+    printf("LCM BF  of a=%u and b=%u is %u\n", a, b, lcm_bf(a, b));
+    printf("LCM GCD of a=%u and b=%u is %u\n", a, b, lcm_bf(a, b));
     
     return 0;
 }
