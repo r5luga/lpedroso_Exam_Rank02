@@ -1,10 +1,10 @@
 #include <stdlib.h>
 #include <unistd.h>
-#include "list.h"
+#include "sort_list.h"
 
 #include <stdio.h> // for printf_list
 
-static void printf_list(t_list *lst)
+static void ft_printflist(t_list *lst)
 {
     while (lst)
     {
@@ -14,7 +14,7 @@ static void printf_list(t_list *lst)
     printf("\n");
 }
 
-static void    print_list(t_list *lst)
+static void    ft_printlist(t_list *lst)
 {
     while (lst)
     {
@@ -52,7 +52,7 @@ static void    print_list(t_list *lst)
     write(1, "\n", 1);
 }
 
-static t_list  *new_node(int value)
+static t_list  *ft_newnode(int value)
 {
     t_list *n = malloc(sizeof(t_list));
     n->data = value;
@@ -60,9 +60,9 @@ static t_list  *new_node(int value)
     return n;
 }
 
-static void    append(t_list **lst, int value)
+static void    ft_append(t_list **lst, int value)
 {
-    t_list *n = new_node(value);
+    t_list *n = ft_newnode(value);
     if (!*lst)
     {
         *lst = n;
@@ -74,7 +74,7 @@ static void    append(t_list **lst, int value)
     tmp->next = n;
 }
 
-int ascending(int a, int b)
+int ft_ascending(int a, int b)
 {
 	return (a <= b);
 }
@@ -83,20 +83,20 @@ int main(void)
 {
     t_list *lst = NULL;
 
-    append(&lst, 42);
-    append(&lst, 3);
-    append(&lst, 15);
-    append(&lst, -7);
-    append(&lst, 99);
-    append(&lst, 0);
+    ft_append(&lst, 42);
+    ft_append(&lst, 3);
+    ft_append(&lst, 15);
+    ft_append(&lst, -7);
+    ft_append(&lst, 99);
+    ft_append(&lst, 0);
 
     write(1, "Before: ", 8);
-    print_list(lst);
+    ft_printlist(lst);
 
-    lst = sort_list(lst, ascending);
+    lst = sort_list(lst, ft_ascending);
 
     write(1, "After:  ", 8);
-    print_list(lst);
+    ft_printflist(lst);
 
     return 0;
 }
